@@ -37,10 +37,6 @@ public class BirdController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!dead)
-        {
-            Debug.Log("YOU ARE DEAD!");
-        }
         dead = true;
         anim_ctrl.SetTrigger("Die");
         GameController.instance.OnBirdDied();
