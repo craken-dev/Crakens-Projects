@@ -4072,6 +4072,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4480499240422852240, guid: 2c6dd4e0083639e4da0da0c8d6ff3241,
+        type: 3}
+      propertyPath: smooth_movement
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3763188637488724880, guid: 2c6dd4e0083639e4da0da0c8d6ff3241,
         type: 3}
       propertyPath: m_Name
