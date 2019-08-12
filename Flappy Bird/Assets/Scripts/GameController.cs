@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     private int score = 0;
     [SerializeField] private Text score_ui;
 
+    [SerializeField] private float target_time = 2.5f;
+    private float timer = 0f;
+
     private void Awake()
     {
         if(instance == null)
@@ -28,16 +31,30 @@ public class GameController : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
-        if(game_over && Input.GetMouseButtonDown(0))
+        if(game_over)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            timer += Time.deltaTime;
+            if (timer > target_time)
+            {
+                game_over_text.SetActive(true);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    timer = 0;
+                }
+            }
         }
     }
     public void OnBirdDied()
     {
-        game_over_text.SetActive(true);
+        if (!is_game_over)
+        {
+            GetComponent<AudioManager>().DieBirdSong();
+        }
+        GetComponent<AudioManager>().HitSound();
         is_game_over = true;
     }
 
